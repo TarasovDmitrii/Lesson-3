@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "root"
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -20,6 +21,26 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func goGrayController(_ sender: Any) {
+        
+        print("go")
+    }
 
+    @IBAction func goGrayControllerLogic(_ sender: Any) {
+        
+        performSegue(withIdentifier: "go1", sender: nil)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print(segue.identifier)
+        if segue.identifier == "go1" {
+            let destinationViewController = segue.destination as! ViewController2
+            destinationViewController.text = "Hello"
+        }
+    }
+    
 }
+
+print("Смотри какой тег")
 
